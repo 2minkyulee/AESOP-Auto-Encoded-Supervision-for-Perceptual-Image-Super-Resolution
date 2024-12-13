@@ -1,6 +1,7 @@
 
 ## AESOP 🦊🍇: Auto-Encoded Supervision for Perceptual Image Super-Resolution 
 <a href="https://arxiv.org/abs/2412.00124"><img src="https://img.shields.io/badge/arXiv-2412.00124-%23B31B1B"></a>
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/auto-encoded-supervision-for-perceptual-image/image-super-resolution-on-div2k-val-4x)](https://paperswithcode.com/sota/image-super-resolution-on-div2k-val-4x?p=auto-encoded-supervision-for-perceptual-image)
 
 MinKyu Lee, Sangeek Hyun, Woojin Jun, Jae-Pil Heo*\
 Sungkyunkwan University\
