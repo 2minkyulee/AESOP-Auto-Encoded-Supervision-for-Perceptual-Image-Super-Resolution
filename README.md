@@ -1,5 +1,5 @@
 
-## AESOP 🦊🍇: Auto-Encoded Supervision for Perceptual Image Super-Resolution 
+## [CVPR2025] AESOP 🦊🍇: Auto-Encoded Supervision for Perceptual Image Super-Resolution 
 <a href="https://arxiv.org/abs/2412.00124"><img src="https://img.shields.io/badge/arXiv-2412.00124-%23B31B1B"></a>
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/auto-encoded-supervision-for-perceptual-image/image-super-resolution-on-div2k-val-4x)](https://paperswithcode.com/sota/image-super-resolution-on-div2k-val-4x?p=auto-encoded-supervision-for-perceptual-image)
 
@@ -18,7 +18,8 @@ This is the official Repository of: Auto-Encoded Supervision for Perceptual Imag
 
 
 ## News
-- ✅ 2024-12-04: **Repository created.**
+- 🎉 2024-12-04: **Repository created.**
+- 🎉 2025-02-07: **Our paper has been accepted to CVPR2025**
 - ❌ **Codes will be updated soon. Stay Tuned!** ⭐
 #
 
