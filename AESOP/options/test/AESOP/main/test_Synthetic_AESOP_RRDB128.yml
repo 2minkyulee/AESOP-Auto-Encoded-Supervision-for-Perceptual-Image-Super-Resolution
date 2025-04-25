@@ -1,0 +1,100 @@
+name: AESOP_RRDB128
+model_type: ESRGANModel
+scale: 4
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_2:
+    name: Set14
+    type: PairedImageDataset
+    dataroot_gt: /mnt/hdd0/mklee/sr_dataset_fromLDL/Set14/HR
+    dataroot_lq: /mnt/hdd0/mklee/sr_dataset_fromLDL/Set14/LR
+    io_backend:
+      type: disk
+  test_3:
+    name: Manga109
+    type: PairedImageDataset
+    dataroot_gt: /mnt/hdd0/mklee/sr_dataset_fromLDL/Manga109/HR
+    dataroot_lq: /mnt/hdd0/mklee/sr_dataset_fromLDL/Manga109/LR
+    io_backend:
+      type: disk
+  test_4:
+    name: General100
+    type: PairedImageDataset
+    dataroot_gt: /mnt/hdd0/mklee/sr_dataset_fromLDL/General100/HR
+    dataroot_lq: /mnt/hdd0/mklee/sr_dataset_fromLDL/General100/LR
+    io_backend:
+      type: disk
+  test_5:
+    name: Urban100
+    type: PairedImageDataset
+    dataroot_gt: /mnt/hdd0/mklee/sr_dataset_fromLDL/Urban100/HR
+    dataroot_lq: /mnt/hdd0/mklee/sr_dataset_fromLDL/Urban100/LR
+    io_backend:
+      type: disk
+  test_6:
+    name: DIV2K100
+    type: PairedImageDataset
+    dataroot_gt: /mnt/hdd0/mklee/sr_dataset_fromLDL/DIV2K100/HR
+    dataroot_lq: /mnt/hdd0/mklee/sr_dataset_fromLDL/DIV2K100/LR
+    io_backend:
+      type: disk
+  test_7:
+    name: BSD100mod12
+    type: PairedImageDataset
+    dataroot_gt: /mnt/hdd0/mklee/sr_dataset_fp64mod12/BSD100mod12/HR
+    dataroot_lq: /mnt/hdd0/mklee/sr_dataset_fp64mod12/BSD100mod12/LR
+    io_backend:
+      type: disk
+  test_8:
+    name: LSDIR250mod12
+    type: PairedImageDataset
+    dataroot_gt: /mnt/hdd0/mklee/sr_dataset_fp64mod12/LSDIR250mod12/HR
+    dataroot_lq: /mnt/hdd0/mklee/sr_dataset_fp64mod12/LSDIR250mod12/LR
+    io_backend:
+      type: disk
+
+
+
+network_g:
+  type: RRDBNet
+  num_in_ch: 3
+  num_out_ch: 3
+  num_feat: 64
+  num_block: 23
+  num_grow_ch: 32
+
+
+# path
+path:
+  pretrain_network_g: /mnt/hdd0/mklee/AESOP_ckpts_deploy/AESOP/SR/AESOP_RRDB128_290K.pth
+  param_key_g: params_ema
+  strict_load_g: true
+
+# validation settings
+val:
+  save_img: True
+  suffix: ""  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr_pytorch
+      crop_border: 4
+      test_y_channel: true
+    ssim:
+      type: calculate_ssim_pytorch
+      crop_border: 4
+      test_y_channel: true
+    lpips:
+      type: calculate_lpips_pytorch
+      crop_border: 0
+    dists:
+      type: calculate_dists_pytorch
+      crop_border: 0
+
+
+
+
+
+# PYTHONPATH="./:${PYTHONPATH}" CUDA_VISIBLE_DEVICES=1 python basicsr/test.py -opt options/test/AESOP/main/test_Synthetic_AESOP_RRDB128.yml

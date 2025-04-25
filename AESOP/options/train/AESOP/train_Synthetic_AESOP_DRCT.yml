@@ -1,0 +1,188 @@
+# general settings
+name: train_synthetic_AESOP_DRCT
+model_type: AesopESRGANArtifactsDisModel
+scale: 4
+num_gpu: 4   # set num_gpu: 0 for cpu mode
+manual_seed: 1
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: DF2K
+    type: PairedImageDataset
+    dataroot_gt: YOUR_HR_PATH
+    dataroot_lq: YOUR_LR_PATH
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+
+    gt_size: 256
+    use_flip: true
+    use_rot: true
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 16
+    batch_size_per_gpu: 16
+    dataset_enlarge_ratio: 100
+    prefetch_mode: cuda
+    pin_memory: true
+
+
+  val:
+    name: DIV2K100
+    type: PairedImageDataset
+    dataroot_gt: /mnt/hdd0/mklee/sr_dataset_fromLDL/DIV2K100/HR
+    dataroot_lq: /mnt/hdd0/mklee/sr_dataset_fromLDL/DIV2K100/LR
+    io_backend:
+      type: disk
+
+
+# network structures
+network_g:
+  type: DRCT
+  upscale: 4
+  in_chans: 3
+  img_size: 64
+  window_size: 16
+  compress_ratio: 3
+  squeeze_factor: 30
+  conv_scale: 0.01
+  overlap_ratio: 0.5
+  img_range: 1.
+  depths: [6, 6, 6, 6, 6, 6]
+  embed_dim: 180
+  num_heads: [6, 6, 6, 6, 6, 6]
+  mlp_ratio: 2
+  upsampler: 'pixelshuffle'
+  resi_connection: '1conv'
+  use_checkpoint: true
+
+network_d:
+  type: VGGStyleDiscriminator256
+  num_in_ch: 3
+  num_feat: 64
+
+# path
+path:
+  pretrain_network_g: /mnt/hdd0/mklee/AESOP_ckpts_deploy/official_DRCT/DRCT_X4.pth
+  param_key_g: params_ema
+  strict_load_g: true
+  resume_state: ~
+
+# training settings
+train:
+  optim_g:
+    type: Adam
+    lr: !!float 1e-4
+    weight_decay: 0
+    betas: [0.9, 0.99]
+  optim_d:
+    type: Adam
+    lr: !!float 1e-4
+    weight_decay: 0
+    betas: [0.9, 0.99]
+
+  scheduler:
+    type: MultiStepLR
+    milestones: [400000, 600000]
+    gamma: 0.5
+
+  total_iter: 300000
+  warmup_iter: -1  # no warm up
+
+  # losses
+  aesop_opt:
+    type: AutoEncoderLoss
+    loss_weight: !!float 1.0
+    as_loss_map: false
+    reduction: mean
+    criterion: l1
+    autoencoder_arch:
+      type: AutoEncoder_RRDBNet
+      enc_opt:
+        placeholder: 0
+      dec_opt:
+        type: RRDBNet
+        num_in_ch: 3
+        num_out_ch: 3
+        num_feat: 64
+        num_block: 23
+        num_grow_ch: 32
+    autoencoder_load:
+      path: /mnt/hdd0/mklee/AESOP_ckpts_deploy/AESOP/AutoEncoder/AE_RRDBdecoder_100K.pth
+      key: params_ema
+  artifacts_opt:
+    type: L1Loss
+    loss_weight: !!float 1.0
+    reduction: mean
+
+  perceptual_opt:
+    type: PerceptualLoss
+    layer_weights:
+      # before relu
+      'conv1_2': 0.1
+      'conv2_2': 0.1
+      'conv3_4': 1
+      'conv4_4': 1
+      'conv5_4': 1
+    vgg_type: vgg19
+    use_input_norm: true
+    range_norm: false
+    perceptual_weight: 1.0
+    style_weight: 0
+    criterion: l1
+  gan_opt:
+    type: GANLoss
+    gan_type: vanilla
+    real_label_val: 1.0
+    fake_label_val: 0.0
+    loss_weight: !!float 5e-3
+
+  net_d_iters: 1
+  net_d_init_iters: 0
+  ema_decay: 0.999
+
+# validation settings
+val:
+  val_freq: !!float 5e3
+  val_start_iter: 0
+  save_img: True
+  metrics:
+    psnr:
+      type: calculate_psnr_pytorch
+      crop_border: 4
+      test_y_channel: true
+#    ssim:
+#      type: calculate_ssim_pytorch
+#      crop_border: 4
+#      test_y_channel: true
+#    lpips:
+#      type: calculate_lpips_pytorch
+#      crop_border: 0
+    dists:
+      type: calculate_dists_pytorch
+      crop_border: 0
+#    aepsnr:
+#      type: calculate_aepsnr_pytorch
+#      crop_border: 4
+#      test_y_channel: true
+
+
+# logging settings
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5e3
+  use_tb_logger: true
+  wandb:
+    project: AESOP
+    resume_id: ~
+
+
+
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
+
