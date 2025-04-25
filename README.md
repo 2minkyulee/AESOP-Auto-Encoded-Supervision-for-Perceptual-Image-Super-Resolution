@@ -9,7 +9,7 @@ Sungkyunkwan University\
 
 ------
 
-This is the official Repository of: Auto-Encoded Supervision for Perceptual Image Super-Resolution\
+This is the official repository of: Auto-Encoded Supervision for Perceptual Image Super-Resolution\
 ⭐ Please contact me via 2minkyulee@gmail.com for any bugs.
 
 
