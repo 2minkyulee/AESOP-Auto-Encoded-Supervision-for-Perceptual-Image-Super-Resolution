@@ -29,9 +29,9 @@ This is the official repository of: Auto-Encoded Supervision for Perceptual Imag
 
 ------
 ## News
-- 2024-12-04: **Repository created.**
-- 2025-02-07: **Our paper has been accepted to CVPR2025** 🎉 
-- 2025-04-25: **Codes updated**
+- 2024-12-04: 🎉 **Repository created!**
+- 2025-02-07: 🎉 **Our paper has been accepted to CVPR2025!**  
+- 2025-04-25: 🎉 **Codes updated!**
 
 ------
 
@@ -42,7 +42,7 @@ This is the official repository of: Auto-Encoded Supervision for Perceptual Imag
 bash custom_setup.sh
 ```
 3. Download train/test datasets (and preprocess if required). Refer to instructions from [BasicSR](https://github.com/XPixelGroup/BasicSR/blob/master/docs/DatasetPreparation.md).
-4. Download pre-trained weights from 
+4. Download pre-trained weights from [Google Drive](https://drive.google.com/file/d/1XW_aFF-D-dwiSNDVAVh2HJYaqoimrHjn/view?usp=sharing)
 
 ------
 
