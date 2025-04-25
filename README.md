@@ -18,7 +18,7 @@ This is the official repository of: Auto-Encoded Supervision for Perceptual Imag
 
 ⭐ Check out our new work: **Rethinking LayerNorm in Image Restoration Transformers**! ([Arxiv](https://arxiv.org/abs/2504.06629), [Github](https://github.com/2minkyulee/Rethinking-LayerNorm-in-Image-Restoration-Transformers))
 \
-⭐ and also our prior work: **Noise-free Optimization in Early Training Steps for Image Super-Resolution** ([Arxiv](https://arxiv.org/abs/2312.17526), [Github](https://github.com/2minkyulee/Noise-free-Optimization-in-Early-Training-Steps-for-Image-Super-Resolution))
+⭐ Also our prior work: **Noise-free Optimization in Early Training Steps for Image Super-Resolution** ([Arxiv](https://arxiv.org/abs/2312.17526), [Github](https://github.com/2minkyulee/Noise-free-Optimization-in-Early-Training-Steps-for-Image-Super-Resolution))
 
 ------
 
