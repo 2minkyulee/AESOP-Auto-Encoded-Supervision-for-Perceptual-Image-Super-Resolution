@@ -42,11 +42,9 @@ This is the official repository of: Auto-Encoded Supervision for Perceptual Imag
 bash custom_setup.sh
 ```
 3. Download train/test datasets (and preprocess if required). Refer to instructions from [BasicSR](https://github.com/XPixelGroup/BasicSR/blob/master/docs/DatasetPreparation.md).
-4. Download pre-trained weights from [Google Drive](https://drive.google.com/file/d/1XW_aFF-D-dwiSNDVAVh2HJYaqoimrHjn/view?usp=sharing)
+4. Download pre-trained weights from [Google Drive](https://drive.google.com/drive/folders/1eTHcQXD8kI9nK6IjQ8DidA0qJbJZkeZ_?usp=sharing)
 
 ------
-
-
 
 ## Tips
 Refer to below for AESOP-relevant codes.
