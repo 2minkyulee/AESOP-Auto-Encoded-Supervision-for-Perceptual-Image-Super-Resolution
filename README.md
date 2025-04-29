@@ -50,10 +50,10 @@ bash custom_setup.sh
 Refer to below for AESOP-relevant codes.
 Direct copy-paste into other standard basicsr-based projects will work.
 
-1. basicsr/archs/autoencoder_arch.py (class AutoEncoder_RRDBNet)
-2. basicsr/models/aesop_esrganArtifactsDis_model.py (class AesopESRGANArtifactsDisModel)
-3. basicsr/losses/aesop_loss.py (class AutoEncoderLoss)
-4. options/train/AESOP
+1. AESOP/basicsr/archs/autoencoder_arch.py (class AutoEncoder_RRDBNet)
+2. AESOP/basicsr/models/aesop_esrganArtifactsDis_model.py (class AesopESRGANArtifactsDisModel)
+3. AESOP/basicsr/losses/aesop_loss.py (class AutoEncoderLoss)
+4. AESOP/options/train/AESOP
 
 ------
 
