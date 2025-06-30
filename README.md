@@ -1,34 +1,23 @@
 
-## [CVPR2025] AESOP 🦊🍇: Auto-Encoded Supervision for Perceptual Image Super-Resolution 
-<a href="https://arxiv.org/abs/2412.00124"><img src="https://img.shields.io/badge/arXiv-2412.00124-%23B31B1B"></a>
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/auto-encoded-supervision-for-perceptual-image/image-super-resolution-on-div2k-val-4x)](https://paperswithcode.com/sota/image-super-resolution-on-div2k-val-4x?p=auto-encoded-supervision-for-perceptual-image)
-
-MinKyu Lee, Sangeek Hyun, Woojin Jun, Jae-Pil Heo*\
+# [CVPR2025] AESOP 🦊🍇
+### ⭐This is the official repository of
+> **Auto-Encoded Supervision for Perceptual Image Super-Resolution ([Arxiv](https://arxiv.org/abs/2412.00124) | [Paper](https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Auto-Encoded_Supervision_for_Perceptual_Image_Super-Resolution_CVPR_2025_paper.pdf) | [Supplementary Material](https://openaccess.thecvf.com/content/CVPR2025/supplemental/Lee_Auto-Encoded_Supervision_for_CVPR_2025_supplemental.pdf))**\
+> MinKyu Lee, Sangeek Hyun, Woojin Jun, Jae-Pil Heo*\
 Sungkyunkwan University\
 \*: Corresponding Author
 
-------
 
-This is the official repository of: Auto-Encoded Supervision for Perceptual Image Super-Resolution\
-⭐ Please contact me via 2minkyulee@gmail.com for any bugs.
-
+### Abstract
+> This work tackles the fidelity objective in the perceptual super-resolution (SR). Specifically, we address the shortcomings of pixel-level $L_\text{p}$ loss ($L_\text{pix}$) in the GAN-based SR framework. Since $L_\text{pix}$ is known to have a trade-off relationship against perceptual quality, prior methods often multiply a small scale factor or utilize low-pass filters. However, this work shows that these circumventions fail to address the fundamental factor that induces blurring. Accordingly, we focus on two points: 1) precisely discriminating the subcomponent of $L_\text{pix}$ that contributes to blurring, and 2) only guiding based on the factor that is free from this trade-off relationship. We show that they can be achieved in a surprisingly simple manner, with an Auto-Encoder (AE) pretrained with $L_\text{pix}$. Accordingly, we propose the Auto-Encoded Supervision for Optimal Penalization loss ($L_\text{AESOP}$), a novel loss function that measures distance in the AE space, instead of the raw pixel space. Note that the AE space indicates the space after the decoder, not the bottleneck. By simply substituting $L_\text{pix}$ with $L_\text{AESOP}$, we can provide effective reconstruction guidance without compromising perceptual quality. Designed for simplicity, our method enables easy integration into existing SR frameworks. Experimental results verify that AESOP can lead to favorable results in the perceptual SR task.
 
 
-------
-
-🦊 **Check out our recent works:** \
+### 🦊 **Check out our recent works:**
 [[Arxiv]](https://arxiv.org/abs/2504.06629), [[Github]](https://github.com/2minkyulee/Analyzing-the-Training-Dynamics-of-Image-Restoration-Transformers) Analyzing the Training Dynamics of Image Restoration Transformers: A Revisit to Layer Normalization
 \
 [[Arxiv]](https://arxiv.org/abs/2312.17526), [[Github]](https://github.com/2minkyulee/Noise-free-Optimization-in-Early-Training-Steps-for-Image-Super-Resolution) (AAAI2024) Noise-free Optimization in Early Training Steps for Image Super-Resolution
 
-------
-
-## Abstract
-> This work tackles the fidelity objective in the perceptual super-resolution (SR). Specifically, we address the shortcomings of pixel-level $L_\text{p}$ loss ($L_\text{pix}$) in the GAN-based SR framework. Since $L_\text{pix}$ is known to have a trade-off relationship against perceptual quality, prior methods often multiply a small scale factor or utilize low-pass filters. However, this work shows that these circumventions fail to address the fundamental factor that induces blurring. Accordingly, we focus on two points: 1) precisely discriminating the subcomponent of $L_\text{pix}$ that contributes to blurring, and 2) only guiding based on the factor that is free from this trade-off relationship. We show that they can be achieved in a surprisingly simple manner, with an Auto-Encoder (AE) pretrained with $L_\text{pix}$. Accordingly, we propose the Auto-Encoded Supervision for Optimal Penalization loss ($L_\text{AESOP}$), a novel loss function that measures distance in the AE space, instead of the raw pixel space. Note that the AE space indicates the space after the decoder, not the bottleneck. By simply substituting $L_\text{pix}$ with $L_\text{AESOP}$, we can provide effective reconstruction guidance without compromising perceptual quality. Designed for simplicity, our method enables easy integration into existing SR frameworks. Experimental results verify that AESOP can lead to favorable results in the perceptual SR task.
 
 
-
-------
 ## News
 - 2024-12-04: 🎉 **Repository created!**
 - 2025-02-07: 🎉 **Our paper has been accepted to CVPR2025!**  
